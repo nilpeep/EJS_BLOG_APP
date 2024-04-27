@@ -31,14 +31,21 @@
             </div>
         </header>
         <!-- Blog Categories -->
-        <div class="nav-scroller py-1 mb-3 border-bottom">
+        <!-- <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
                 {% for(let category of categories){ %}
                 <a class="nav-item nav-link link-body-emphasis" href="/views/blog/category/{%= category.id %}/posts">{%= category.name  %}</a>
                 {% } %}
+                
                
             </nav>
-        </div>
+        </div> -->
+        <div class="nav-scroller py-1 mb-3 border-bottom">
+            <nav class="nav nav-underline justify-content-between">
+            {% for (let category of categories) { %}
+                <a class="nav-item nav-link link-body-emphasis" href="/views/blog/category/{%= category.id %}/posts">{%= category.name %}</a>
+            {% } %}
+            </nav>
     </div>
     <!-- main start -->
     <main class="container">
@@ -57,10 +64,12 @@
                     <h2 class="display-5 mb-1">
                         <a href="/views/blog/post/{%= post.id %}" class="link-body-emphasis text-decoration-none">{%= post.title %}</a>
                     </h2>
-                    {%- post.content %}
+                    <p class="blog-post-meta">{%= post.createdAt.toUTCString() %}</p>
+                    {%- post.content.substring(0,500) %} 
+                    <a style="color:rgb(87, 87, 206);cursor: pointer;"> ...read more</a>
                     <div class="admin-area text-end">
-                        <a class="btn btn-sm btn-primary" href="/views/blog/post/:id/update">Update</a>
-                        <a class="btn btn-sm btn-danger" href="/views/blog/post/:id/delete" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a class="btn btn-sm btn-primary" href="/views/blog/post/{%= post.id %}/update">Update</a>
+                        <a class="btn btn-sm btn-danger" href="/views/blog/post/{%= post.id %}/delete" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </article>
  
@@ -79,36 +88,20 @@
                         <h3 class="fst-italic">Recent Posts</h3>
                         <ul class="list-unstyled">
                             <!-- Recent posts -->
+                            {% for(let recentPost of recentPosts){ %}
+
                             <li>
                                 <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                                    href="/post/:id">
+                                    href="/views/blog/posts/{%= recentPost.id %}">
                                     <div class="col-lg-8">
-                                        <h5>Sample Blog Post</h5>
-                                        <p class="my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                        <small class="text-body-secondary">January 15, 2023</small>
+                                        <h5>{%= recentPost.title %}</h5>
+                                        <p class="my-2">{%= recentPost.content.replace(/<(.|\n)*?>/g, '').substring(0,100) %}</p>
+                                        <small class="text-body-secondary">{%= recentPost.createdAt.toUTCString() %}</small>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                                    href="/post/:id">
-                                    <div class="col-lg-8">
-                                        <h5>Sample Blog Post</h5>
-                                        <p class="my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                        <small class="text-body-secondary">January 15, 2023</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                                    href="/post/:id">
-                                    <div class="col-lg-8">
-                                        <h5>Sample Blog Post</h5>
-                                        <p class="my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                        <small class="text-body-secondary">January 15, 2023</small>
-                                    </div>
-                                </a>
-                            </li>
+                            {% } %}
+                            
                         </ul>
                     </div>
                 </div>
