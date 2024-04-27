@@ -78,9 +78,12 @@
                 <!-- Pagination -->
                 {% if(details.pages){ %}
                 <nav class="blog-pagination" aria-label="Pagination">
+
                     <!-- first page -->
-                    {%  }
-                    <a class="btn rounded-pill btn-outline-secondary" href="?page=1">&laquo;</a>
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="?page=1">&laquo;</a>
+
+                    <!-- previous page -->
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="?page={%= details.pages.previous %}">&larr;</a>
 
                     <!-- pages  -->
                     {% for(let pageNo=1; pageNo<= details.pages.total; pageNo++){ %}
@@ -88,6 +91,15 @@
 
                     {% } %}
                     <!-- <a class="btn btn-outline-secondary rounded-pill">2</a> -->
+                    <!-- next page -->
+
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="?page={%= details.pages.next %}">&rarr;</a>
+
+
+                    <!-- last page -->
+
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="?page={%= details.pages.total %}">&raquo;</a>
+
                 </nav>
                 {% } %}
                 <p class="text-end p-2 border-top">Total 5 Posts</p>
