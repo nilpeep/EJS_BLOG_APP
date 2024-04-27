@@ -49,18 +49,8 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 
 // HomePage:
 app.all('/', (req, res) => {
-    if(req.originalUrl == '/*'){
-        res.redirect('/views')
-    }
-    if(req.originalUrl.startsWith('/api')){
-        res.send({
-            error:false,
-            message:'Welcome to blog API!'
-        })
-    }else{
-
-        res.send('<h1>Welcome to MY BLOG!</h1>')
-    }
+    res.redirect('/views/blog/post')
+        
 })
 
 // Views routes:

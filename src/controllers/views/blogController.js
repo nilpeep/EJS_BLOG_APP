@@ -23,11 +23,13 @@ module.exports.BlogCategory = {
         // const data = await BlogCategory.find()
         const data = await res.getModelList(BlogCategory)
 
-        res.status(200).send({
-            error: false,
-            count: data.length,
-            result: data
-        })
+        // res.status(200).send({
+        //     error: false,
+        //     count: data.length,
+        //     result: data
+        // })
+
+        res.render('index')
     },
 
     create: async (req, res) => {
