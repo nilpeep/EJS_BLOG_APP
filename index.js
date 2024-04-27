@@ -1,8 +1,6 @@
 "use strict"
-/* -------------------------------------------------------
-    EXPRESSJS - BLOG Project with Mongoose
-------------------------------------------------------- */
 /*
+    EXPRESSJS - BLOG Project with Mongoose
  * $ npm init -y
  * $ npm i express dotenv express-async-errors
  * $ npm i mongoose
@@ -16,20 +14,30 @@ const PORT = process.env.PORT || 8000
 
 
 // TEMPLATE:
-
-//? default open acd closeing tags: <% ... %>
-
 app.set('view engine', 'ejs')
+
+//? default open and closeing delimiter: <% ... %>
+// const ejs = require('ejs')
+// ejs.delimiter = '#' // <# ... #>
+// ejs.openDelimiter = '{' 
+// ejs.closeDelimiter = '}' // {# ... #}
+
+app.set('view options', {
+    // delimitter : '%',
+    openDelimiter : '{',
+    closeDelimiter : '}'
+})
+
 app.set('views', './public')
 
-/* ------------------------------------------------------- */
+
 // SessionCookies:
 // http://expressjs.com/en/resources/middleware/cookie-session.html
 // https://www.npmjs.com/package/cookie-session
 //* $ npm i cookie-session
 const session = require("cookie-session")
 app.use(session({ secret: process.env.SECRET_KEY || 'secret_keys_for_cookies' }))
-/* ------------------------------------------------------- */
+
 // Accept json data & convert to object:
 app.use(express.json())
 
