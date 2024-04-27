@@ -10,7 +10,7 @@ require('express-async-errors')
 /* ------------------------------------------------------- */
 
 // Call Models:
-const { BlogCategory, BlogPost } = require('../models/blogModel')
+const { BlogCategory, BlogPost } = require('../../models/blogModel')
 
 
 // ------------------------------------------

@@ -53,8 +53,8 @@ app.all('/', (req, res) => {
 })
 
 // Routes:
-app.use('/user', require('./src/routes/userRoute'))
-app.use('/blog', require('./src/routes/blogRoute'))
+app.use('/api/user', require('./src/routes/api/userRoute'))
+app.use('/api/blog', require('./src/routes/api/blogRoute'))
 
 /* ------------------------------------------------------- */
 // Synchronization:
