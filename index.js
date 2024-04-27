@@ -14,6 +14,14 @@ const app = express()
 require('dotenv').config()
 const PORT = process.env.PORT || 8000
 
+
+// TEMPLATE:
+
+//? default open acd closeing tags: <% ... %>
+
+app.set('view engine', 'ejs')
+app.set('views', './public')
+
 /* ------------------------------------------------------- */
 // SessionCookies:
 // http://expressjs.com/en/resources/middleware/cookie-session.html
