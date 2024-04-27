@@ -80,25 +80,25 @@
                 <nav class="blog-pagination" aria-label="Pagination">
 
                     <!-- first page -->
-                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="?page=1">&laquo;</a>
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="{%= pageUrl %}&page=1">&laquo;</a>
 
                     <!-- previous page -->
-                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="?page={%= details.pages.previous %}">&larr;</a>
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.previous ? '' : 'disabled' %} " href="{%= pageUrl %}&page={%= details.pages.previous %}">&larr;</a>
 
                     <!-- pages  -->
                     {% for(let pageNo=1; pageNo<= details.pages.total; pageNo++){ %}
-                    <a class="btn {%= ( pageNo== details.pages.current ? 'btn-outline-primary' : 'btn-outline-secondary') %} rounded-pill" href="?page={%= pageNo %}">{%= pageNo %}</a>
+                    <a class="btn {%= ( pageNo== details.pages.current ? 'btn-outline-primary' : 'btn-outline-secondary') %} rounded-pill" href="{%= pageUrl %}&page={%= pageNo %}">{%= pageNo %}</a>
 
                     {% } %}
                     <!-- <a class="btn btn-outline-secondary rounded-pill">2</a> -->
                     <!-- next page -->
 
-                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="?page={%= details.pages.next %}">&rarr;</a>
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="{%= pageUrl %}&page={%= details.pages.next %}">&rarr;</a>
 
 
                     <!-- last page -->
 
-                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="?page={%= details.pages.total %}">&raquo;</a>
+                    <a class="btn rounded-pill btn-outline-secondary {%= details.pages.next ? '' : 'disabled' %} " href="{%= pageUrl %}&page={%= details.pages.total %}">&raquo;</a>
 
                 </nav>
                 {% } %}

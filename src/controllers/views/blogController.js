@@ -94,6 +94,7 @@ module.exports.BlogPost = {
       posts: data,
       recentPosts,
       details: await res.getModelListDetails(BlogPost),
+      pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
     });
   },
 
