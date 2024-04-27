@@ -21,7 +21,7 @@ module.exports.BlogCategory = {
     list: async (req, res) => {
 
         // const data = await BlogCategory.find()
-        const data = await res.getModelList(BlogCategory)
+        // const data = await res.getModelList(BlogCategory)
 
         // res.status(200).send({
         //     error: false,
@@ -125,12 +125,14 @@ module.exports.BlogPost = {
 
         const data = await res.getModelList(BlogPost, 'blogCategoryId')
 
-        res.status(200).send({
-            error: false,
-            count: data.length,
-            details: await res.getModelListDetails(BlogPost),
-            result: data,
-        })
+        // res.status(200).send({
+        //     error: false,
+        //     count: data.length,
+        //     details: await res.getModelListDetails(BlogPost),
+        //     result: data,
+        // })
+
+        res.render('index')
     },
 
     listCategoryPosts: async (req, res) => {
