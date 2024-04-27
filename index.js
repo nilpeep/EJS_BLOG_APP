@@ -49,16 +49,32 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 
 // HomePage:
 app.all('/', (req, res) => {
-    res.send('WELCOME TO BLOG API')
+    if(req.originalUrl == '/*'){
+        res.redirect('/views')
+    }
+    if(req.originalUrl.startsWith('/api')){
+        res.send({
+            error:false,
+            message:'Welcome to blog API!'
+        })
+    }else{
+
+        res.send('<h1>Welcome to MY BLOG!</h1>')
+    }
 })
 
-// Routes:
+// Views routes:
+app.use('/views/user', require('./src/routes/views/userRoute'))
+app.use('/views/blog', require('./src/routes/views/blogRoute'))
+
+// Api routes:
 app.use('/api/user', require('./src/routes/api/userRoute'))
 app.use('/api/blog', require('./src/routes/api/blogRoute'))
 
 /* ------------------------------------------------------- */
-// Synchronization:
-// require('./src/sync')()
+
+//! Synchronization:
+//! require('./src/sync')()
 
 // errorHandler:
 app.use(require('./src/errorHandler'))
