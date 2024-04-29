@@ -131,11 +131,25 @@ module.exports.BlogPost = {
         // })
         const data = await BlogPost.create(req.body)
 
-        res.status(201).send({
-            error: false,
-            body: req.body,
-            result: data,
-        })
+        // res.status(201).send({
+        //     error: false,
+        //     body: req.body,
+        //     result: data,
+        // })
+
+        if (req.method == 'POST') {
+        
+            const data = await BlogPost.create(req.body)
+
+            res.redirect('/')
+
+        } else {
+
+            res.render('postForm', {
+                categories: await BlogCategory.find()
+            })
+        }
+    
     },
 
     read: async (req, res) => {
