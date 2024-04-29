@@ -10,23 +10,25 @@ const { BlogCategory, BlogPost } = require('../../controllers/views/blogControll
 // ------------------------------------------
 // BlogCategory
 // ------------------------------------------
+// URL: /views/blog
 
-router.all('/category',BlogCategory.list)
-router.all('/categorycreate',BlogCategory.create)
-router.all('/category:categoryId', BlogCategory.read)
-router.all('/category:categoryId/update',BlogCategory.update)
-router.all('/category:categoryId/delete',BlogCategory.delete)
+router.all('/category', BlogCategory.list)
+router.all('/category/create', BlogCategory.create)
+router.all('/category/:categoryId', BlogCategory.read)
+router.all('/category/:categoryId/update', BlogCategory.update)
+router.all('/category/:categoryId/delete', BlogCategory.delete)
 
 // ------------------------------------------
 // BlogPost
 // ------------------------------------------
+// URL: /views/blog
 
-router.all('/post',BlogPost.list)
-router.all('/postcreate',BlogPost.create)
-router.all('/post:postId', BlogPost.read)
-router.all('/post:postId/update',BlogPost.update)
-router.all('/post:postId/delete',BlogPost.delete)
+router.all('/post', BlogPost.list)
+router.all('/post/create', BlogPost.create)
+router.all('/post/:postId', BlogPost.read)
+router.all('/post/:postId/update', BlogPost.update)
+router.all('/post/:postId/delete', BlogPost.delete)
 
-router.get('/category/:categoryId/posts', BlogPost.listCategoryPosts)
+router.all('/category/:categoryId/posts', BlogPost.listCategoryPosts)
 
 module.exports = router

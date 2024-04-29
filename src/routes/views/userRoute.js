@@ -15,10 +15,10 @@ const { User } = require('../../controllers/views/userController')
 router.all('/login', User.login)
 router.all('/logout', User.logout)
 
-router.all('/',User.list)
-router.all('/create',User.create)
+router.all('/', User.list)
+router.all('/create', User.create)
 router.all('/:id', User.read)
-router.all('/:id/update',User.update)
-router.all('/:id/delete',User.delete)
+router.all('/:id/update', User.update)
+router.all('/:id/delete', User.delete)
 
 module.exports = router
