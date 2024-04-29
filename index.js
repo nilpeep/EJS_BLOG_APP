@@ -42,6 +42,9 @@ app.use(session({ secret: process.env.SECRET_KEY || 'secret_keys_for_cookies' })
 // Accept json data & convert to object:
 app.use(express.json())
 
+// Accept form data & convert to object:
+app.use(express.urlencoded({ extended: true }))
+
 // Connect to MongoDB with Mongoose:
 require('./src/dbConnection')
 
@@ -55,7 +58,7 @@ app.all('/', (req, res) => {
 })
 
 // Routes: // VIEWS:
-app.use('/views/user', require('./src/routes/views/userRoute'))
+app.use('/', require('./src/routes/views/userRoute'))
 app.use('/views/blog', require('./src/routes/views/blogRoute'))
 
 // Routes: // API:

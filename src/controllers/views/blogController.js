@@ -101,6 +101,7 @@ module.exports.BlogPost = {
         const pageUrl = req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
 
         res.render('index', {
+            user: req.session?.user,
             categories,
             posts: data,
             recentPosts,
@@ -123,13 +124,6 @@ module.exports.BlogPost = {
     // CRUD ->
 
     create: async (req, res) => {
-        
-        // const data = await BlogPost.create({
-        //     fieldName: 'value',
-        //     fieldName: 'value',
-        //     fieldName: 'value',
-        // })
-        // const data = await BlogPost.create(req.body)
 
         // res.status(201).send({
         //     error: false,
@@ -149,7 +143,6 @@ module.exports.BlogPost = {
                 categories: await BlogCategory.find()
             })
         }
-    
     },
 
     read: async (req, res) => {

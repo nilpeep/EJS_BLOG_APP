@@ -25,8 +25,16 @@
                 <div class="col-4 text-center">
                     <a class="blog-header-logo text-body-emphasis text-decoration-none" href="/">MY BLOG</a>
                 </div>
+                {%# console.log(user) %}
+                {% if (user) { %}
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <b>{%= user.email %} </b> &nbsp;
+                    <a class="btn btn-sm btn-outline-secondary" href="/logout">Logout</a>
+                </div>
+                {% } else { %}
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a>
                 </div>
+                {% } %}
             </div>
         </header>
