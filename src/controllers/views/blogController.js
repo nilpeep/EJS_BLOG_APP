@@ -129,7 +129,7 @@ module.exports.BlogPost = {
         //     fieldName: 'value',
         //     fieldName: 'value',
         // })
-        const data = await BlogPost.create(req.body)
+        // const data = await BlogPost.create(req.body)
 
         // res.status(201).send({
         //     error: false,
